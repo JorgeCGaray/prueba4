@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/main.css'%}">
+    <title>blog| {% block titulo %} {% endblock titulo %}  </title>
+</head>
+<body class="contenedor">
+
+    <div>
+        <a href="{% url 'nosotros'%}">nosotros template</a>       
+        <a href="{% url 'home'%}">template home</a>
+        <a href="{% url 'noticias:inicio'%}">template noticia</a>
+
+        {% if user.is_uthenticated %}
+        <p> Bienvenido {{user.username}} </p>
+        <a href="{% url 'logout' %}">cerrar sesion</a>
+        {% else %} 
+        <a href="{% url 'login' %}">iniciar sesion</a>
+        
+        {% endif %}
+    <div>
+    {% block contenido %}
+    {% endblock contenido %}
+
+    
+</body>
+</html6>
